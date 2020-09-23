@@ -1,0 +1,33 @@
+.rootSearchContainer{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 140px;
+    padding-right: 140px;
+    height: calc(100vh - 64px)
+}
+
+@media only screen and (max-width: 600px) {
+    .rootSearchContainer{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+  }
+
+  .marginBottom{
+      margin-bottom: 30px;
+  }
+
+  .setFont{
+    font-family: 'Architects Daughter', cursive;
+    font-size: 50px;
+  }
+
+  .dropDownAndtext{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width:100%;
+  }
