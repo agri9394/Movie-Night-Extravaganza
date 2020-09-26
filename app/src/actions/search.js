@@ -31,22 +31,6 @@ export function fetchTitleDetail(title) {
     };
 }
 
-export function itemsFetchDataSuccess(items) {
-    return {
-        type: 'SEARCH_RESPONSE',
-        items
-    };
-}
-
-
-
-export function itemsDetailSuccess(items) {
-    return {
-        type: 'ITEM_DETAIL_SUCCESS',
-        items
-    };
-}
-
 function returnAction(type,items){
     return {
         type: type,
