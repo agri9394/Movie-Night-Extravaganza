@@ -3,5 +3,4 @@
 
 export default {
     BASE_URL:`http://www.omdbapi.com${API_KEY}`
-
 }

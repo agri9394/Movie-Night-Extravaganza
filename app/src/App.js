@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import NavigationComponent from './components/navBar'
 import SearchScreen from './screens/search'
@@ -8,10 +8,7 @@ import Screen from './constants/screen'
 import Loader from './components/loader';
 import {connect} from 'react-redux'
 
-
-
 function App(props) {
-
   const {isLoading,selectedScreen} = props.data.search
   return (
     <>

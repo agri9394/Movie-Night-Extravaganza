@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './style.css';
 
 function SubHeader(props) {
-
-useEffect(()=>{
-//   console.log('-------->>>>>',props)
-},[props])
- const {totalCountForSearchedData} = props
+  const { totalCountForSearchedData,lastSearchText } = props
   return (
     <div className='subHeaderRoot'>
-    <p className='searchTitleResult'>{totalCountForSearchedData} found for "{props.lastSearchText}". </p>
+      <p className='searchTitleResult'>{totalCountForSearchedData} found for "{lastSearchText}". </p>
     </div>
   );
 }
-
 
 export default SubHeader;

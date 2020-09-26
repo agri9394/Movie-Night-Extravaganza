@@ -1,12 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './style.css'
 import {connect} from 'react-redux'
 
 function Dropdown(props) {
-
-useEffect(()=>{
-//   console.log('-------->>>>>',props)
-},[props])
 
   return (
     <div className="dropdown">

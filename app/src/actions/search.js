@@ -1,4 +1,3 @@
-import axios from 'axios'
 import {serviceCall} from '../network'
 
 export function showLoader() {
@@ -8,23 +7,11 @@ return {
 }
 }
 
-
-export function hitAPI() {
-    return (dispatch) => {
-        dispatch(showLoader());
-        axios.get('http://dummy.restapiexample.com/api/v1/employees')
-            .then((response) => dispatch(itemsFetchDataSuccess(response.data)))
-    };
-}
-
 export function searchWithTitle(title,page = 1) {
     return (dispatch) => {
-        debugger;
         if(page === 1){dispatch(showLoader())}
         serviceCall(`&s=${title}&page=${page}`)
        .then((response) => {
-        console.log('---> RESPONSE**',response)
-        debugger;
         if (response && response.data){
             dispatch(returnAction("SEARCH_RESPONSE",{...response.data,title,page}))
         } else {
@@ -39,8 +26,7 @@ export function fetchTitleDetail(title) {
         dispatch(showLoader());
         serviceCall(`&t=${title}&plot=full`)
        .then((response) => {
-        console.log('---> RESPONSE**',response)   
-        dispatch(itemsDetailSuccess(response.data))
+        dispatch(returnAction('ITEM_DETAIL_SUCCESS',response.data))
         })
     };
 }

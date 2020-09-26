@@ -1,3 +1,12 @@
+.parentCard{
+    width:350px;
+    height:auto;
+    margin:20px !important;
+}
+
+.cardImageStyle{
+  height:300px
+}
 .zoom {
     background-color: green;
     transition: transform .2s; /* Animation */
