@@ -8,7 +8,6 @@ function MyContent(props) {
     const apiData = fetchMyContentFromLS()
     const [updateNow, setUpdateNow] = useState(true)
 
-    //Refresh List when User removes the Movie from My Content.
     const refreshList = () => {
         setUpdateNow(!updateNow)
     }

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import './style.css';
 import MovieCell from '../../components/MovieCell'
-import {searchWithTitle} from '../../actions/api'
+import {searchWithTitle} from '../../actions/search'
 import store from '../../reducers/store'
 import SubHeader from '../../components/SubHeader'
 
@@ -9,7 +9,7 @@ import {connect} from 'react-redux'
 
 
 function MoviesScreen(props) {
-  const {apiData,totalCountForSearchedData,lastSearchText,lastPage} = props.data.api
+  const {apiData,totalCountForSearchedData,lastSearchText,lastPage} = props.data.search
    const observer = useRef()
 
    const lastMovieReference = useCallback(node=>{

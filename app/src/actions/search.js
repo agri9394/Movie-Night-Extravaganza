@@ -1,5 +1,4 @@
 import axios from 'axios'
-import store from '../reducers/store'
 import {serviceCall} from '../network'
 
 export function showLoader() {
@@ -27,9 +26,9 @@ export function searchWithTitle(title,page = 1) {
         console.log('---> RESPONSE**',response)
         debugger;
         if (response && response.data){
-            dispatch(itemsFetchDataSuccess({...response.data,title,page}))
+            dispatch(returnAction("SEARCH_RESPONSE",{...response.data,title,page}))
         } else {
-            dispatch(itemsFetchDataSuccess({})) 
+            dispatch(returnAction("SEARCH_RESPONSE",{})) 
         }
         })
     };
@@ -46,8 +45,6 @@ export function fetchTitleDetail(title) {
     };
 }
 
-// http://www.omdbapi.com/?t=American+Dad!&plot=full
-
 export function itemsFetchDataSuccess(items) {
     return {
         type: 'SEARCH_RESPONSE',
@@ -55,16 +52,18 @@ export function itemsFetchDataSuccess(items) {
     };
 }
 
-export function saveLastSearchedText(items) {
-    return {
-        type: 'LAST_SEARCHED_TEXT',
-        items
-    };
-}
+
 
 export function itemsDetailSuccess(items) {
     return {
         type: 'ITEM_DETAIL_SUCCESS',
+        items
+    };
+}
+
+function returnAction(type,items){
+    return {
+        type: type,
         items
     };
 }

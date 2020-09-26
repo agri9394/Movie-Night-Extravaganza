@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
 import store from '../../reducers/store'
-import {fetchTitleDetail} from '../../actions/api'
+import {fetchTitleDetail} from '../../actions/search'
 
 
 

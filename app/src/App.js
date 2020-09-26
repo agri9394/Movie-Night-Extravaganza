@@ -4,7 +4,7 @@ import NavigationComponent from './components/navBar'
 import SearchScreen from './screens/search'
 import MoviesScreen from './screens/Movies'
 import MyContent from './screens/MyContent'
-import Screen from './constants'
+import Screen from './constants/screen'
 import Loader from './components/loader';
 import {connect} from 'react-redux'
 
@@ -12,13 +12,7 @@ import {connect} from 'react-redux'
 
 function App(props) {
 
-useEffect(()=>{
-  console.log('-------->>>>>',props)
-},[props])
-  const {isLoading,apiData,selectedScreen} = props.data.api
-
-  console.log('-------->>>>> DATA',apiData)
-
+  const {isLoading,selectedScreen} = props.data.search
   return (
     <>
     <div className="divCss"/>
@@ -28,7 +22,6 @@ useEffect(()=>{
       {isLoading && <Loader/>}
       {!isLoading && selectedScreen === Screen.SEARCH && <SearchScreen/>}
       {!isLoading && selectedScreen === Screen.SEARCH_LIST && <MoviesScreen/>}
-      {/* {!isLoading && selectedScreen === Screen.DETAIL &&<MovieDetail/>} */}
       {!isLoading && selectedScreen === Screen.MY_CONTENT &&<MyContent/>}
       </div>
     </div>

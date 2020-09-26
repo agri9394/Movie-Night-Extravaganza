@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import store from './reducers/store'
 import './style.css'
 import {connect} from 'react-redux'
 

@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react';
 // import store from './reducers/store'
-import SCREEN from '../../constants'
+import SCREEN from '../../constants/screen'
 import store from '../../reducers/store'
 import {updateScreenName} from '../../actions/index'
 import {connect} from 'react-redux'
@@ -8,7 +8,7 @@ import {connect} from 'react-redux'
 function NavigationComponent(props) {
 
 
-const {selectedScreen,apiData} = props.data.api
+const {selectedScreen,apiData} = props.data.search
 
 const searchActive = selectedScreen === SCREEN.SEARCH ? 'active' : ''
 const myContent = selectedScreen === SCREEN.MY_CONTENT ? 'active' : ''

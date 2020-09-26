@@ -1,16 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import Dropdown from '../../components/dropDown';
+import React, { useState } from 'react';
 import './style.css';
+import Dropdown from '../../components/dropDown';
 import store from '../../reducers/store'
-import { searchWithTitle } from '../../actions/api'
+import { searchWithTitle } from '../../actions/search'
 
+/**
+ * Search Component consist of Search textField and Button Action to search movies.
+ */
 function SearchScreen() {
-    const [search, setSearchText] = useState('')
+    const [searchText, setSearchText] = useState('')
+    /**
+     *On Seach Field Change Action to Save text in local state.
+     */
     const onChangeSearchField = (e) => {
         setSearchText(e.target.value)
     }
+    /**
+     *Search Button Action With Validation For Empty Search
+     */
     const onSubmitSearchButton = () => {
-        store.dispatch(searchWithTitle(search))
+        if(searchText && searchText.trim() !== ""){
+            store.dispatch(searchWithTitle(searchText))
+            return
+        }
+        alert('Search field is invalid!')
     }
 
 
@@ -20,7 +33,7 @@ function SearchScreen() {
             <div className='dropDownAndtext marginBottom'>
                 <Dropdown />
                 <input
-                    value={search}
+                    value={searchText}
                     placeholder="Search Movies | Series | Episodes" 
                     onChange={onChangeSearchField} 
                     type="text" 
