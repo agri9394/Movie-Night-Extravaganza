@@ -31,7 +31,6 @@ function SearchScreen() {
         <div className='containerTop'>
             <p className='setFont'>Movie Night Extravaganza</p>
             <div className='dropDownAndtext marginBottom'>
-                <Dropdown />
                 <input
                     value={searchText}
                     placeholder="Search Movies | Series | Episodes" 
