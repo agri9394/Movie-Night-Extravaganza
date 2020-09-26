@@ -1,40 +1,29 @@
-import React, { useEffect,useState } from 'react';
-import Loader from '../../components/loader';
+import React, { useEffect, useState } from 'react';
 import Dropdown from '../../components/dropDown';
 import './style.css';
-// import store from './reducers/store'
-import {connect} from 'react-redux'
+import store from '../../reducers/store'
+import { searchWithTitle } from '../../actions/api'
 
-function SearchScreen(props) {
+function SearchScreen() {
 
-    const [isLoading,setLoading] = useState(false)
+    const [search, setSearchText] = useState('')
 
-useEffect(()=>{
-  console.log('-------->>>>>',props)
-},[props])
-
-  return (
-    <div className='rootSearchContainer'>
-    {isLoading && <Loader/>}
-    {!isLoading && 
-    <>
-    <p className='setFont'>Movie Night Extravaganza</p>
-    <div className='dropDownAndtext marginBottom'>
-    <Dropdown/>
-    <input placeholder="Search Movies | Series | Episodes" type="text" class="form-control form-control-lg"/>
-    </div>
-    <button type="submit" class="btn btn-dark" onClick={()=>{
-        setLoading(true)
-    }}>Search</button>
-    </>}
-    </div>
-  );
+    return (
+        <div className='containerTop'>
+            <p className='setFont'>Movie Night Extravaganza</p>
+            <div className='dropDownAndtext marginBottom'>
+                <Dropdown />
+                <input
+                    value={search}
+                    placeholder="Search Movies | Series | Episodes" onChange={(e) => {
+                        setSearchText(e.target.value)
+                    }} type="text" className="form-control form-control-lg" />
+            </div>
+            <button type="submit" className="btn btn-dark" onClick={() => {
+                store.dispatch(searchWithTitle(search))
+            }}>Search</button>
+        </div>
+    );
 }
 
-const mapStateToProps = (state) =>{
-  return{
-      data:state
-  }
-}
-
-export default connect(mapStateToProps)(SearchScreen);
+export default SearchScreen;

@@ -1,29 +1,61 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 // import store from './reducers/store'
+import SCREEN from '../../constants'
+import store from '../../reducers/store'
+import {updateScreenName} from '../../actions/index'
 import {connect} from 'react-redux'
 
 function NavigationComponent(props) {
 
-useEffect(()=>{
-  console.log('-------->>>>>',props)
-},[props])
+
+const {selectedScreen,apiData} = props.data.api
+
+const searchActive = selectedScreen === SCREEN.SEARCH ? 'active' : ''
+const myContent = selectedScreen === SCREEN.MY_CONTENT ? 'active' : ''
+const lastSearchedActive= selectedScreen === SCREEN.SEARCH_LIST ? 'active' : ''
+
+const dismissNav = () =>{
+  if ( document.getElementById('navBarButton') &&  window.innerWidth < 900){
+    document.getElementById('navBarButton').click()
+  }
+}
 
   return (
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">Movie Night Extravaganza</a>
-    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
+    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+    <a href="#" className="navbar-brand">Movie Night Extravaganza</a>
+    <button id ="navBarButton" type="button" className='navbar-toggler' data-toggle="collapse" data-target="#navbarCollapse">
+        <span className="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav">
-            <a href="#" class="nav-item nav-link active">My Content</a>
-            <a href="#" class="nav-item nav-link ">Movies</a>
-            <a href="#" class="nav-item nav-link ">Series</a>
-            <a href="#" class="nav-item nav-link ">Episode</a>
+    <div className="collapse navbar-collapse" id="navbarCollapse">
+        <div className="navbar-nav">
+            <a  onClick={()=>{
+                store.dispatch(updateScreenName(SCREEN.SEARCH))
+                dismissNav()
+              }} className={`nav-item nav-link ${searchActive}`}>Search</a>
+            {apiData && apiData.length > 0 &&      <a  onClick={()=>{
+                store.dispatch(updateScreenName(SCREEN.SEARCH_LIST))
+                dismissNav()
+              }} className={`nav-item nav-link ${lastSearchedActive}`}>Last Searched</a>}
+      
+            <a onClick={()=>{
+                dismissNav()
+                store.dispatch(updateScreenName(SCREEN.MY_CONTENT))
+            }} className={`nav-item nav-link ${myContent}`}>My Content</a>
+            <a onClick={()=>{
+                dismissNav()
+            }} className="nav-item nav-link">Movies</a>
+            <a onClick={()=>{
+                dismissNav()
+            }} className="nav-item nav-link">Series</a>
+            <a onClick={()=>{
+                dismissNav()
+            }} className="nav-item nav-link">Episode</a>
         </div>
-        <div class="navbar-nav ml-auto"> 
-        <a href="#" class="nav-item nav-link active">Login</a>         
+        <div className="navbar-nav ml-auto"> 
+        <div onClick={()=>{
+            dismissNav()
+        }} className="nav-item nav-link">Login</div>         
         </div>
     </div>
 </nav>

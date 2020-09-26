@@ -26,4 +26,16 @@ export const VisibilityFilters = {
   SHOW_ACTIVE: 'SHOW_ACTIVE'
 }
 
+export function updateScreenName(screenName) {
+  return (dispatch) => {
+      dispatch(updateScreen(screenName))
+  };
+}
+
+function updateScreen(items) {
+  return {
+      type: 'SCREEN_NAME',
+      items
+  };
+}
 

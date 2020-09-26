@@ -1,0 +1,10 @@
+.movieContainer{
+    width: 100%;
+    height: 100%;
+    flex-grow: 0 33.34 0;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    overflow: auto;
+    justify-content: space-evenly;
+}

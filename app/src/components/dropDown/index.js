@@ -6,18 +6,18 @@ import {connect} from 'react-redux'
 function Dropdown(props) {
 
 useEffect(()=>{
-  console.log('-------->>>>>',props)
+//   console.log('-------->>>>>',props)
 },[props])
 
   return (
-    <div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle buttonSize" data-toggle="dropdown">
+    <div className="dropdown">
+    <button type="button" className="btn btn-primary dropdown-toggle buttonSize" data-toggle="dropdown">
      Select a Category
     </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Movies</a>
-      <a class="dropdown-item" href="#">Series</a>
-      <a class="dropdown-item" href="#">Episodes</a>
+    <div className="dropdown-menu">
+      <a className="dropdown-item" >Movies</a>
+      <a className="dropdown-item" >Series</a>
+      <a className="dropdown-item">Episodes</a>
     </div>
   </div>
   );

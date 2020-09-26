@@ -1,10 +1,11 @@
 import axios from 'axios';
+import NetworkConstants from './networkConstant'
 
-export function serviceCall(url) {
+export function serviceCall(params='') {
     // axios.defaults.headers.post['Content-Type'] = 'application/json';
     return new Promise((resolve, reject) => {
-
-        axios(url)
+        let url = NetworkConstants.BASE_URL;
+        axios(url+params)
             .then(response => {
                 console.info(`serviceCall, Success response`, response);
                 resolve(response);

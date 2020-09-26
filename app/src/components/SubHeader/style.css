@@ -1,0 +1,14 @@
+.subHeaderRoot{
+    width: 100%;
+    height: 64px;
+    background: #1d2124;
+    display: flex;
+    filter: drop-shadow(20px 13px 6px white);
+    color: white;
+    align-items:center;
+    justify-content: center;
+}
+
+.searchTitleResult{
+    margin-bottom: 0px
+}

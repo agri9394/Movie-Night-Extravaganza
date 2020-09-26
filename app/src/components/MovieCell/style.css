@@ -1,0 +1,50 @@
+.zoom {
+    background-color: green;
+    transition: transform .2s; /* Animation */
+    margin: 0 auto;
+    padding: 10px
+  }
+  
+  .card-body{
+      display: none;
+      height: auto;
+      transition: transform .2s;
+      border:1px outset wheat
+  }
+
+  .zoom:hover .card-body{
+    background: white;
+    margin-top:-100px;
+    margin-bottom:-200px;
+    transform: scale(1.15);
+    z-index: 4;
+    transition: transform .6s;
+    display: block;
+    width: 100%;
+    border-radius:10px;
+  }
+
+  @media only screen and (max-width: 823px) {
+    .zoom {
+        margin: 0 auto;
+        padding: 10px
+      }
+      
+      .card-body{
+          display: block;
+          height: auto;
+          border:1px outset wheat
+      }
+    
+      .zoom:hover .card-body{
+        background: white;
+        margin-top:0px;
+        margin-bottom:0px;
+        transform: scale(1);
+        z-index: 0;
+        transition: none;
+        display: block;
+        width: 100%;
+        border-radius:10px;
+      }
+}

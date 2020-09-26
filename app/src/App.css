@@ -1,5 +1,22 @@
 .App {
   text-align: center;
+  overflow: hidden;
+}
+
+.rootContainer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 64px)
+}
+
+@media only screen and (max-width: 600px) {
+  .rootContainer{
+      padding-left: 10px;
+      padding-right: 10px;
+  }
 }
 
 .App-logo {
@@ -39,7 +56,7 @@
 
 
 .divCss{
-  background:url('https://miro.medium.com/max/2560/1*9OHb0riFFGhVs-G4hR04Jg.jpeg');
+  background:url('http://miro.medium.com/max/2560/1*9OHb0riFFGhVs-G4hR04Jg.jpeg');
   animation: chbg 15s infinite alternate;
   background-size:cover;
   filter: blur(8px);
@@ -52,11 +69,11 @@
 
 @keyframes chbg {
   50% {
-    background:url('https://movieposterhd.com/wp-content/uploads/2019/03/Avengers-Endgame-2019-Poster-Wallpaper.jpg');
+    background:url('http://movieposterhd.com/wp-content/uploads/2019/03/Avengers-Endgame-2019-Poster-Wallpaper.jpg');
   background-size:cover
   }
   100% {
-    background:url('https://miro.medium.com/max/2560/1*9OHb0riFFGhVs-G4hR04Jg.jpeg');
+    background:url('http://miro.medium.com/max/2560/1*9OHb0riFFGhVs-G4hR04Jg.jpeg');
   background-size:cover
   }
 }
