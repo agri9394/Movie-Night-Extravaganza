@@ -56,7 +56,7 @@
 
 
 .divCss{
-  background:url('http://miro.medium.com/max/2560/1*9OHb0riFFGhVs-G4hR04Jg.jpeg');
+  background:url('../src/resources/images/avengers.jpg');
   animation: chbg 15s infinite alternate;
   background-size:cover;
   filter: blur(8px);
@@ -69,11 +69,11 @@
 
 @keyframes chbg {
   50% {
-    background:url('http://movieposterhd.com/wp-content/uploads/2019/03/Avengers-Endgame-2019-Poster-Wallpaper.jpg');
+    background:url('../src/resources/images/lastDance.jpeg');
   background-size:cover
   }
   100% {
-    background:url('http://miro.medium.com/max/2560/1*9OHb0riFFGhVs-G4hR04Jg.jpeg');
+    background:url('../src/resources/images/avengers.jpg');
   background-size:cover
   }
 }

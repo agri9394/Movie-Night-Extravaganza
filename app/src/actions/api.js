@@ -18,19 +18,19 @@ export function hitAPI() {
     };
 }
 
-export function searchWithTitle(title,category="") {
+export function searchWithTitle(title,page = 1) {
     return (dispatch) => {
-        dispatch(showLoader());
-        serviceCall(`&s=${title}&page=1`)
+        debugger;
+        if(page === 1){dispatch(showLoader())}
+        serviceCall(`&s=${title}&page=${page}`)
        .then((response) => {
         console.log('---> RESPONSE**',response)
         debugger;
         if (response && response.data){
-            dispatch(itemsFetchDataSuccess(response.data))
+            dispatch(itemsFetchDataSuccess({...response.data,title,page}))
         } else {
             dispatch(itemsFetchDataSuccess({})) 
         }
-        dispatch(saveLastSearchedText(title));
         })
     };
 }

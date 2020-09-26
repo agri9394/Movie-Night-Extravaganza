@@ -1,29 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import './style.css';
 import MovieCell from '../../components/MovieCell'
+import {searchWithTitle} from '../../actions/api'
+import store from '../../reducers/store'
 import SubHeader from '../../components/SubHeader'
+
 import {connect} from 'react-redux'
 
 
 function MoviesScreen(props) {
+  const {apiData,totalCountForSearchedData,lastSearchText,lastPage} = props.data.api
+   const observer = useRef()
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-      }, []);
+   const lastMovieReference = useCallback(node=>{
+    console.log('SCROLL TO LAST*** firstLine')
 
-      function handleScroll() {
-        if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
-        console.log('Fetch more list items!');
+    if(observer.current) observer.current.disconnect();
+    observer.current = new IntersectionObserver(entries=>{
+      console.log('SCROLL TO LAST*** isIntersecting',entries[0].isIntersecting)
+
+      if(entries[0].isIntersecting && lastPage !== null){
+        debugger;
+        store.dispatch(searchWithTitle(lastSearchText,lastPage))
+        console.log('SCROLL TO LAST***')
+
       }
+    })
+    if(node) observer.current.observe(node)
+   })
 
-    const {apiData,totalCountForSearchedData,lastSearchText} = props.data.api
-    console.log('>>>>SCREEN',apiData)
+
     return (
     <>
     <SubHeader totalCountForSearchedData={totalCountForSearchedData} lastSearchText={lastSearchText}/>
     <div className='movieContainer'>
-    {apiData.map((e,index)=><MovieCell keyword={index} movieObj={e}/>)}
+      {apiData.map((e,index)=>{ 
+        if(apiData.length === index+1){
+        
+        return <MovieCell reference={lastMovieReference} keyword={index} movieObj={e}/>
+        }
+        return <MovieCell keyword={index} movieObj={e}/>
+      })
+   }
    </div>
    </>
     );

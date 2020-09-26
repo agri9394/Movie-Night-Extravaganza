@@ -19,10 +19,11 @@ function MovieCell(props) {
 
     let buttonName = keyVal.hasOwnProperty(movieObj.imdbID) ? "Remove From My Content" : 'Add To My Content'
 
+    debugger;
     return (
-    <div id ={props.keyword} key={props.keyword} className="card zoom" style={{"width":"350px",
+    <div ref={props.reference ? props.reference : null} id ={props.keyword} key={props.keyword} className="card zoom" style={{"width":"350px",
     "height":"auto","marginTop":'20px'}} onClick={()=>{
-        store.dispatch(fetchTitleDetail(movieObj.Title))
+        // store.dispatch(fetchTitleDetail(movieObj.Title))
     }}>
     <img className="card-img-top" src={movieObj.Poster !== 'N/A' ? movieObj.Poster : 'http://www.kindpng.com/picc/m/18-189751_movie-placeholder-hd-png-download.png'} alt="Card image" style={{"width":"100%",height:'300px'}}/>
     <div className="card-body">
